@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iqra Ismail - Zoology Instructor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5e1a;
+            --secondary-color: #6b8c42;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #f8f9fa;
+            --theme-mode: 'light';
+        }
+
+        .dark-mode {
+            --primary-color: #3e8030;
+            /* Slightly brighter, still rich green */
+            --secondary-color: #88a960;
+            /* Lighter secondary for readability */
+            --accent-color: #ffd700;
+            /* Brighter gold for better contrast */
+            --light-color: #1e1e1e;
+            /* Deep gray background */
+            --dark-color: #121212;
+            /* Even darker for depth */
+            --text-color: #e6e6e6;
+            /* Soft white for better readability */
+            --text-light: #bbbbbb;
+            /* Muted text color */
+            --theme-mode: 'dark';
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            transition: all 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-color);
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: var(--text-light) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://teresascollege.wordpress.com/wp-content/uploads/2023/05/benefits-of-studying-zoology.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            height: 80vh;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            background-color: var(--light-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .skill-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            margin: 5px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .text-border {
+            /* Hide fill color */
+            -webkit-text-stroke: 1px white;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 3px solid var(--secondary-color);
+        }
+
+        .testimonial-card {
+            background-color: var(--light-color);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 30px 0;
+        }
+
+        .social-icon {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .zoology-icon {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+        }
+
+        .certificate-img {
+            height: 200px;
+            object-fit: contain;
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf zoology-icon"></i> Iqra Ismail
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certificates">Certificates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="display-4 text-border fw-bold mt-5">Iqra Ismail</h1>
+            <p class="lead">Zoology Instructor</p>
+            <div class="mt-4">
+                <a href="#about" class="btn btn-outline-light btn-lg mx-2">Learn More</a>
+                <a href="#contact" class="btn btn-primary btn-lg mx-2">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoA_GyayeuiWB2pvISJyCt97lDa2inS1ckfg&s"
+                        style="height: 410px;" alt="Teaching Zoology" class="img-fluid rounded mb-4">
+                </div>
+                <div class="col-lg-6">
+                    <h3><i class="fas fa-user-graduate zoology-icon"></i> Profile</h3>
+                    <p>Dedicated Bachelor of Zoology with a passion for teaching and a proven track record in education.
+                        Experienced in navigating classroom dynamics with a background in CSS and other competitive
+                        exams in Pakistan. Known for punctuality, discipline, and patience, fostering an environment
+                        conducive to student development. Possesses a resilient and calm demeanor for effective teaching
+                        and learning.</p>
+
+                    <h3 class="mt-4"><i class="fas fa-graduation-cap zoology-icon"></i> Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Bachelor of Science in Zoology</h5>
+                            <p class="text-muted">Islamia University, BWP | 2018 – 2022</p>
+                            <p>GPA: 3.81 / 4.0</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>FSc Pre-Medical</h5>
+                            <p class="text-muted">Fatima Jinnah Degree College, Khanpur | 2016 – 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Skills & Expertise</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3><i class="fas fa-chalkboard-Instructor zoology-icon"></i> Teaching Skills</h3>
+                    <div class="mt-3">
+                        <span class="skill-badge">Subject Knowledge</span>
+                        <span class="skill-badge">Assessment and Evaluation Techniques</span>
+                        <span class="skill-badge">Student Engagement Strategies</span>
+                        <span class="skill-badge">Lesson Planning & Curriculum Design</span>
+                        <span class="skill-badge">Adaptability</span>
+                        <span class="skill-badge">Time Management</span>
+                        <span class="skill-badge">Teamwork</span>
+                        <span class="skill-badge">Effective Communication</span>
+                        <span class="skill-badge">Documentation</span>
+                        <span class="skill-badge">Critical Thinking</span>
+                        <span class="skill-badge">Problem Solving</span>
+                    </div>
+
+                    <h3 class="mt-4"><i class="fas fa-language zoology-icon"></i> Languages</h3>
+                    <div class="mt-3">
+                        <span class="skill-badge">English</span>
+                        <span class="skill-badge">Urdu</span>
+                        <span class="skill-badge">Punjabi</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3><i class="fas fa-microscope zoology-icon"></i> Zoology Skills</h3>
+                    <div class="mt-3">
+                        <span class="skill-badge">Fisheries</span>
+                        <span class="skill-badge">Animal Classification (Taxonomy)</span>
+                        <span class="skill-badge">Vertebrate & Invertebrate Zoology</span>
+                        <span class="skill-badge">Animal Physiology</span>
+                        <span class="skill-badge">Basic Genetics & Heredity</span>
+                        <span class="skill-badge">WildLife Conservation</span>
+                        <span class="skill-badge">Environmental Sciences</span>
+                        <span class="skill-badge">Ecology & Environmental Awareness</span>
+                        <span class="skill-badge">Field Observation & Data Collection</span>
+                        <span class="skill-badge">Evolutionary Biology</span>
+                        <span class="skill-badge">Habitat Study & Conservation</span>
+                        <span class="skill-badge">Laboratory Safety & Protocols</span>
+                        <span class="skill-badge">Biodiversity Documentation</span>
+                        <span class="skill-badge">Specimen Handling & Preservation</span>
+                        <span class="skill-badge">Population Biology & Dynamics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Certificates</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top certificate-img" alt="Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Zoological Exhibition</h5>
+                            <p class="card-text">Khawaja Fareed College (2022, 2021, 2019)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top certificate-img" alt="Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Oxford Teaching Workshop</h5>
+                            <p class="card-text">2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top certificate-img" alt="Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Omics Logic Workshop</h5>
+                            <p class="card-text">2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top certificate-img" alt="Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Government of Punjab Speech Competition</h5>
+                            <p class="card-text">2015</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                            class="card-img-top certificate-img" alt="Certificate">
+                        <div class="card-body">
+                            <h5 class="card-title">Teaching Excellence Award</h5>
+                            <p class="card-text">Recognized for outstanding teaching methods in Biology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Biology and Science Instructor</h4>
+                    <h5>Progressive Grammar School, RYK | 2024 – Present</h5>
+                    <ul>
+                        <li>Facilitated active learning through interactive teaching techniques and conceptual
+                            discussions</li>
+                        <li>Designed creative lesson plans to improve student comprehension and engagement</li>
+                        <li>Conducted practical lab sessions to solidify theoretical knowledge with real-world
+                            applications</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>Biology and Science Instructor</h4>
+                    <h5>NIMS School System, RYK | 2022 – 2023</h5>
+                    <ul>
+                        <li>Fostered learning through engaging methods and concept exploration</li>
+                        <li>Developed innovative lesson plans to enhance student understanding</li>
+                        <li>Implemented hands-on laboratory experiments to reinforce theoretical concepts</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>Biology, Chemistry and Science Instructor</h4>
+                    <h5>Govt. Girls High School 45/p RYK | 2021 – 2022</h5>
+                    <ul>
+                        <li>Sparked curiosity and innovation in biology, chemistry, and science</li>
+                        <li>Organized science fairs and exhibitions to showcase student projects</li>
+                        <li>Mentored students for competitive exams and science olympiads</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4>Biology and Chemistry Instructor</h4>
+                    <h5>Babar Education System 45/p RYK | 2021</h5>
+                    <ul>
+                        <li>Promoted scientific thinking through dynamic and evolving classroom environments</li>
+                        <li>Introduced innovative teaching aids to simplify complex concepts</li>
+                        <li>Conducted regular assessments to track student progress</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="mt-5"><i class="fas fa-seedling zoology-icon"></i> Other Activities</h3>
+            <div class="row mt-3">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-binoculars zoology-icon fa-3x mb-3"></i>
+                            <h5 class="card-title">Exploration</h5>
+                            <p class="card-text">Organizing field trips and nature exploration activities to enhance
+                                practical learning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-hands-helping zoology-icon fa-3x mb-3"></i>
+                            <h5 class="card-title">Mentorship</h5>
+                            <p class="card-text">Guiding students in research projects and career development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-paint-brush zoology-icon fa-3x mb-3"></i>
+                            <h5 class="card-title">Creativity</h5>
+                            <p class="card-text">Developing creative teaching methods to make science engaging and fun
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Testimonials</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <p>"Ms. Iqra has a unique ability to make complex biological concepts accessible to all
+                            students. Her passion for zoology is contagious, and she creates an engaging learning
+                            environment that fosters curiosity."</p>
+                        <p class="testimonial-author">- School Principal, NIMS School System</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <p>"Her dedication to student success goes beyond the classroom. She spends extra time ensuring
+                            every student understands the material and develops a genuine interest in the subject."</p>
+                        <p class="testimonial-author">- Colleague, Govt. Girls High School</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <p>"Ms. Ismail's teaching methods transformed my understanding of biology. Her real-world
+                            examples and hands-on approach made learning enjoyable and memorable."</p>
+                        <p class="testimonial-author">- Former Student</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <p>"As a parent, I appreciate how Ms. Iqra goes above and beyond to ensure students not only
+                            learn but develop critical thinking skills that will serve them throughout their education."
+                        </p>
+                        <p class="testimonial-author">- Parent of Student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Contact Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fas fa-envelope zoology-icon"></i> Get In Touch</h4>
+                            <p class="card-text">Feel free to reach out for teaching opportunities, collaborations, or
+                                any questions about zoology education.</p>
+                            <ul class="list-unstyled text-dark">
+                                <li class="mb-2"><i class="fas fa-map-marker-alt zoology-icon"></i> Rahim Yar Khan,
+                                    Pakistan</li>
+                                <li class="mb-2">
+                                    <i class="fas fa-envelope zoology-icon"></i>
+                                    <a class="text-decoration-none text-dark" href="mailto:iqraismailrehanofficial@gmail.com">iqraismailrehanofficial@gmail.com</a>
+                                </li>
+                                <li class="mb-2"><i class="fas fa-phone zoology-icon"></i> +92 335 1850110</li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+        <!--    <div class="mb-4">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>  -->
+            <p>&copy; 2021 Iqra Ismail - Zoology Instructor. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Theme toggle functionality
+            const themeToggle = $('#themeToggle');
+            const body = $('body');
+
+            // Check for saved theme preference or use preferred color scheme
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            if (savedTheme === 'dark') {
+                body.addClass('dark-mode');
+                themeToggle.html('<i class="fas fa-sun"></i>');
+            }
+
+            themeToggle.click(function () {
+                body.toggleClass('dark-mode');
+                if (body.hasClass('dark-mode')) {
+                    themeToggle.html('<i class="fas fa-sun"></i>');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeToggle.html('<i class="fas fa-moon"></i>');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 70,
+                    },
+                    500,
+                    'linear'
+                );
+            });
+
+            // Back to top button
+            const backToTopButton = $('#backToTop');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    backToTopButton.addClass('visible');
+                } else {
+                    backToTopButton.removeClass('visible');
+                }
+            });
+
+            backToTopButton.click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 'smooth');
+            });
+
+            // Add animation to elements when they come into view
+            function animateOnScroll() {
+                $('.card, .timeline-item, .testimonial-card').each(function () {
+                    const elementPosition = $(this).offset().top;
+                    const scrollPosition = $(window).scrollTop() + $(window).height();
+
+                    if (elementPosition < scrollPosition - 100 && !$(this).hasClass('animated')) {
+                        $(this).addClass('animated');
+                        $(this).css({
+                            'opacity': '0',
+                            'transform': 'translateY(20px)'
+                        }).animate({
+                            'opacity': '1',
+                            'transform': 'translateY(0)'
+                        }, 600);
+                    }
+                });
+            }
+
+            // Run on load and scroll
+            animateOnScroll();
+            $(window).scroll(animateOnScroll);
+
+            // Check for theme parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const themeParam = urlParams.get('theme');
+
+            if (themeParam === 'dark') {
+                body.addClass('dark-mode');
+                themeToggle.html('<i class="fas fa-sun"></i>');
+                localStorage.setItem('theme', 'dark');
+            } else if (themeParam === 'light') {
+                body.removeClass('dark-mode');
+                themeToggle.html('<i class="fas fa-moon"></i>');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+
+</html>
